@@ -1,0 +1,33 @@
+.is-hide{
+    display: none;
+}
+
+.chara{
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 24px 20px;
+    border-radius: 8px;
+
+    &-charaname{
+        font-weight: bold;
+    }
+
+    dl{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    dt{
+        width: 30%;
+        text-align: right;
+        padding-bottom: 8px;
+
+        &::after{
+            content: "：";
+
+        }
+    }
+    dd{
+        width: 70%;
+    }
+}
