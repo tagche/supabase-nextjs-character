@@ -1,4 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 盛り込み要件
+## フロントエンド
+recoilでのステート管理（）
+カスタムフックを作成
+ドラッグアンドドロップでのインタラクティブ性
+
+## サーバーサイドとの連携
+Supabase（BaaS）を利用
+Next.jsの利用
+非同期処理（Async）の利用
 
 ## Getting Started
 
