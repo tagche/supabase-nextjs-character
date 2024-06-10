@@ -12,8 +12,10 @@ export function Droppable(props) {
     });
     const style = {
         opacity: isOver ? 1 : 0.5,
-        border: "1px solid red",
-        padding: "20px"
+        background: "#e4ddb3",
+        padding: "30px",
+        alignItems: "center",
+        minHeight: '50vh'
     };
 
     return (
@@ -34,6 +36,14 @@ export function Draggable(props) {
     });
     const style = {
         transform: CSS.Translate.toString(transform),
+        fontSize: '1.6em',
+        color: '#fcfcfc',
+        background: '#8fcfc1',
+        padding: '20px 30px',
+        borderRadius: '500px',
+        border: 0,
+        minWidth: '340px',
+        height: '160px',
     };
 
     return (

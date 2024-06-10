@@ -1,33 +1,12 @@
-.is-hide{
-    display: none;
+body{
+    margin: 0;
+    padding: 0;
 }
 
-.chara{
-    background: #fff;
-    margin-bottom: 20px;
-    padding: 24px 20px;
-    border-radius: 8px;
+main{
+    text-align: center;
+}
 
-    &-charaname{
-        font-weight: bold;
-    }
-
-    dl{
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-    }
-    dt{
-        width: 30%;
-        text-align: right;
-        padding-bottom: 8px;
-
-        &::after{
-            content: "：";
-
-        }
-    }
-    dd{
-        width: 70%;
-    }
+h1, h2, h3, h4, h5, h6, p{
+    margin: .3em 0;
 }
