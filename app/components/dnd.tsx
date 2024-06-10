@@ -12,6 +12,8 @@ export function Droppable(props) {
     });
     const style = {
         opacity: isOver ? 1 : 0.5,
+        border: "1px solid red",
+        padding: "20px"
     };
 
     return (
