@@ -4,17 +4,8 @@ import React, { useState } from 'react';
 import { DndContext } from '@dnd-kit/core';
 import { Droppable, Draggable } from './dnd';
 
-// Styles
-const draggableAreaStyle = {
-    display: "flex",
-    justifyContent: "space-around"
-}
-
 export default function QuizPanel({title, choicesIds, DB}) {
     const [parent, setParent] = useState(Array);
-    
-    // console.log(choicesIds);
-    
     
     // 選択肢エレメントを生成
     const createDraggable = () => DB.map((chara) => 
@@ -28,11 +19,11 @@ export default function QuizPanel({title, choicesIds, DB}) {
         <DndContext onDragEnd={handleDragEnd}>
             <h1>{title}</h1>
             <Droppable id="choiceA">
-                <h2>Drag Your Choice</h2>
+                <h2 className='text-guide'>Drop Your Choice, here</h2>
                 {DB.map((chara, i) => parent[i] === "choiceA" && createDraggable()[i])}
             </Droppable>
 
-            <div style={draggableAreaStyle}>
+            <div className='answerBtnWrap'>
                 {DB.map((chara, i) => parent[i] === undefined ? createDraggable()[i] : undefined)}
             </div>
         </DndContext>

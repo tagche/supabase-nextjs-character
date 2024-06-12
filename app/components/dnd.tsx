@@ -1,5 +1,6 @@
 import { useDroppable, useDraggable } from '@dnd-kit/core';
 import {CSS} from '@dnd-kit/utilities';
+import { posix, relative } from 'path'
 
 /**
  * ドロップ対象エリア
@@ -10,16 +11,9 @@ export function Droppable(props) {
     const {isOver, setNodeRef} = useDroppable({
         id: props.id,
     });
-    const style = {
-        opacity: isOver ? 1 : 0.5,
-        background: "#e4ddb3",
-        padding: "30px",
-        alignItems: "center",
-        minHeight: '50vh'
-    };
 
     return (
-        <div ref={setNodeRef} style={style}>
+        <div ref={setNodeRef} className="dropBox">
             {props.children}
         </div>
     );
@@ -34,20 +28,12 @@ export function Draggable(props) {
     const {attributes, listeners, setNodeRef, transform} = useDraggable({
         id: props.id,
     });
-    const style = {
+    const styles = {
         transform: CSS.Translate.toString(transform),
-        fontSize: '1.6em',
-        color: '#fcfcfc',
-        background: '#8fcfc1',
-        padding: '20px 30px',
-        borderRadius: '500px',
-        border: 0,
-        minWidth: '340px',
-        height: '160px',
     };
 
     return (
-        <button ref={setNodeRef} style={style} {...listeners} {...attributes}>
+        <button ref={setNodeRef} style={styles} className="answerBtn" {...listeners} {...attributes}>
             {props.children}
         </button>
     );
