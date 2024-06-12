@@ -19,7 +19,7 @@ export default function QuizPanel({title, choicesIds, DB}) {
         <DndContext onDragEnd={handleDragEnd}>
             <h1>{title}</h1>
             <Droppable id="choiceA">
-                <h2 className='text-guide'>Drop Your Choice, here</h2>
+                <h2 className='text-dropguide'>Drop Your Choice, here</h2>
                 {DB.map((chara, i) => parent[i] === "choiceA" && createDraggable()[i])}
             </Droppable>
 

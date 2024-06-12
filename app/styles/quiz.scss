@@ -45,7 +45,7 @@ p {
 
 .text {
     &-subhead {
-        font-size: 18px;
+        font-size: 24px;
         letter-spacing: 0;
         line-height: 1.2;
     }
@@ -59,8 +59,10 @@ p {
         -webkit-text-stroke: 1px #000;
         text-stroke: 1px #000;
     }
-
     &-guide{
+        font-size: 14px;
+    }
+    &-dropguide{
         color: #aaa;
         font-size: 30px;
         opacity: 0.3;

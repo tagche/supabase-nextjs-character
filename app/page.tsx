@@ -1,5 +1,6 @@
 import { createClient } from '@/utils/supabase/server';
 import QuizPanel from './components/quizPanel';
+import OpeningAnim from './components/openingAnim'
 
 export default async function Home() {
     const supabase = createClient(); 
@@ -25,10 +26,7 @@ export default async function Home() {
         <main className="flex flex-col items-center justify-between p-24">
             <div className="bgGradation"></div>
             <div className='container'>
-                <header>
-                    <h1 className='text-outline'>Frontend Engineer L.T's Portfolio</h1>
-                    <p className='text-subhead'>このページはNext.jsとSupabase（BaaS）で構築しており、クイズ部分はDB連携して出題しています。</p>
-                </header>
+                <OpeningAnim></OpeningAnim>
                 {renderQuiz()}
             </div>
         </main>
