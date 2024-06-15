@@ -1,6 +1,7 @@
+import React, { useEffect } from 'react';
 import { useDroppable, useDraggable } from '@dnd-kit/core';
 import {CSS} from '@dnd-kit/utilities';
-import { posix, relative } from 'path'
+import Gsap from "gsap";
 
 /**
  * ドロップ対象エリア
@@ -32,8 +33,25 @@ export function Draggable(props) {
         transform: CSS.Translate.toString(transform),
     };
 
+    useEffect(() => {
+        Gsap.fromTo('.answerBtn',
+            {
+                autoAlpha: 0,
+                ease: "power1.out",
+                y: 50
+            },
+            {
+                display: "inline-block",
+                autoAlpha: 1,
+                duration: .5,
+                delay: 1,
+                y: 0,
+                stagger: 0.015,
+            });
+    }, []);
+
     return (
-        <button ref={setNodeRef} style={styles} className="answerBtn" {...listeners} {...attributes}>
+        <button ref={setNodeRef} style={styles} className={"answerBtn answerBtn-" + props.id} {...listeners} {...attributes}>
             {props.children}
         </button>
     );
