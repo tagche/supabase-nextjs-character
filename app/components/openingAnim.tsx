@@ -19,17 +19,25 @@ export default function OpeningAnim() {
             .join("");
         h1.innerHTML = spreadH1
 
-        Gsap.fromTo('.openingHead span', 
+        Gsap.fromTo('.openingHead', 
             {
                 autoAlpha: 0,
-                y: 10,
                 ease: "power1.out"
             },
             {
                 autoAlpha: 1,
-                y: -10,
+        });
+        Gsap.fromTo('.openingHead span', 
+            {
+                autoAlpha: 0,
+                y: 20,
+                ease: "power1.out"
+            },
+            {
+                autoAlpha: 1,
+                y: -15,
                 stagger: 0.01,
-            });
+        });
 
         Gsap.fromTo('.openingSubhead',
             {
@@ -51,9 +59,8 @@ export default function OpeningAnim() {
 
     return (
         <header>
-            <h2 className='text-subhead is-hide openingSubhead'>Next.js × Supabase</h2>
+            <h2 className='text-subhead openingSubhead'>Next.js × Supabase</h2>
             <h1 className='text-outline openingHead'>Front-End Developer L.T's Portfolio</h1>
-            {/* <p className='text-guide'>このページはNext.jsとSupabase（BaaS）で構築しており、クイズ部分はDB連携して出題しています。</p> */}
         </header>
     );
 

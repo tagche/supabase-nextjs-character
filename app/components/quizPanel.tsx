@@ -1,30 +1,28 @@
 'use client';
 
-import { createElement, type ReactNode } from 'react'
 import React, { useState, useEffect } from 'react';
+import { useRecoilState } from "recoil";
+import { quizState } from '../atoms/atoms';
 import { DndContext } from '@dnd-kit/core';
 import { Droppable, Draggable } from './dnd';
 import Gsap from "gsap";
+import { nl2br } from '../util/util';
 
-const nl2br = (text: string) =>
-    text
-      .split('\n')
-      .map((line, index) => [line, createElement('br', { key: index })])
-      .flat()
-      .slice(0, -1)
+export default function QuizPanel({QUIZ, choicesIds, DB}) {
+    const [parent, setParent] = useState(Array)
+    const [answer, setAnswer] = useState(Number)
+    const [quiz, setQuiz] = useRecoilState(quizState);
 
-export default function QuizPanel({title, choicesIds, DB}) {
-    const [parent, setParent] = useState(Array);
-    
     // 選択肢エレメントを生成
-    const createDraggable = () => DB.map((chara, i) => 
-        <Draggable key={`draggable-${chara.id}`} id={`draggable-${i}`}>
-            <h4>{chara.title}</h4>
-            {chara.hobby && <p><small>{chara.hobby}</small></p>}
+    const createDraggable = () => DB.map((ans, i) => 
+        <Draggable key={`draggable-${ans.id}`} id={`draggable-${ans.id}`}>
+            <h4>{ans.title}</h4>
         </Draggable>
     )
 
     useEffect(() => {
+        setAnswer(QUIZ.answer)
+
         const guide = document.querySelector(".text-dropguide")
         const spreadGuide = [...guide.textContent]
             .map((e) => {
@@ -43,23 +41,25 @@ export default function QuizPanel({title, choicesIds, DB}) {
             {
                 autoAlpha: 1,
                 repeat: -1,
-                repeatDelay: 4,
+                repeatDelay: 3,
                 stagger: 0.015,
             });
     }, []);
 
     return (
-        <DndContext onDragEnd={handleDragEnd}>
-            <Droppable id="choiceA">
-                <h1>{nl2br(title)}</h1>
-                <h2 className='text-dropguide'>Drop Your Choice, here</h2>
-                {DB.map((chara, i) => parent[i] === "choiceA" && createDraggable()[i])}
-            </Droppable>
+        <section className='quizBox'>
+            <DndContext onDragEnd={handleDragEnd}>
+                <Droppable id="choiceA" >
+                    <h1>{nl2br(QUIZ.question)}</h1>
+                    <h2 className='text-dropguide'>Drop Your Choice, here</h2>
+                    {DB.map((ans, i) => parent[i] === "choiceA" && createDraggable()[i])}
+                </Droppable>
 
-            <div className='answerBtnWrap'>
-                {DB.map((chara, i) => parent[i] === undefined ? createDraggable()[i] : undefined)}
-            </div>
-        </DndContext>
+                <div className='answerBtnWrap'>
+                    {DB.map((ans, i) => parent[i] === undefined ? createDraggable()[i] : undefined)}
+                </div>
+            </DndContext>
+        </section>
     );
 
     /**
@@ -69,9 +69,12 @@ export default function QuizPanel({title, choicesIds, DB}) {
     function handleDragEnd({over, active}) {
         let result = [];
         if(over){
-            DB.map((chara, i) => result.push(active.id !== `draggable-${i}` ? undefined : over.id));
+            DB.map((ans, i) => result.push(active.id !== `draggable-${ans.id}` ? undefined : over.id));
+            active.id.slice(-1) == answer 
+                ? setQuiz(String(Number(quiz) + 1))
+                : console.log("残念")
         }else{
-            DB.map((chara, i) => result.push(active.id !== `draggable-${i}` ? parent[i] : undefined));
+            DB.map((ans, i) => result.push(active.id !== `draggable-${ans.id}` ? parent[i] : undefined));
         }
         setParent([...result])
     }

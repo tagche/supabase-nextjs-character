@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { createClient } from '@/utils/supabase/server';
 import OpeningBg from './components/openingBg';
-import Container from "./components/container";
+import Container from "./components";
 
 export const metadata: Metadata = {
     title: "Frontend Engineer L.T's Portfolio - Supabase(BaaS) & React",
