@@ -9,16 +9,20 @@ export default function OpeningAnim() {
     const [loading, setLoading] = useRecoilState(loadingState);
 
     useEffect(() => {
-        const h1 = document.querySelector(".openingHead")
-        const spreadH1 = [...h1.textContent]
-            .map((e) => {
-                return e !== " " 
-                    ? `<span style="display: inline-block;">${e}</span>`
-                    : `<span style="display: inline-block; min-width: .25em;">${e}</span>`
-            })
-            .join("");
-        h1.innerHTML = spreadH1
-
+        const h1 = document.querySelector("h1.openingHead")
+        if(h1){
+            const spread = h1.textContent?.split("")
+            const spreadH1 = spread ? spread
+                .map((e:string) => {
+                    return e !== " " 
+                        ? `<span style="display: inline-block;">${e}</span>`
+                        : `<span style="display: inline-block; min-width: .25em;">${e}</span>`
+                })
+                .join("")
+                : "";
+                
+            h1.innerHTML = spreadH1
+        }
         Gsap.fromTo('.openingHead', 
             {
                 autoAlpha: 0,
@@ -63,8 +67,8 @@ export default function OpeningAnim() {
 
     return (
         <header>
-            <p className='text-subhead openingSubhead'>Next.js × Supabase</p>
-            <h1 className='text-outline openingHead'>Front-End Developer Leo's Page</h1>
+            <p className="text-subhead openingSubhead">Next.js × Supabase</p>
+            <h1 className="text-outline openingHead">Front-End Developer Leo&apos;s Page</h1>
         </header>
     );
 

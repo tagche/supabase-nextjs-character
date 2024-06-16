@@ -7,12 +7,12 @@ export default function OpeningBg() {
     useEffect(() => {
         const randomX = random(-400, 400)
         const randomY = random(-200, 200)
-        const randomDelay = random(0, 50)
         const randomTime = random(6, 12)
         const randomTime2 = random(5, 6)
         const randomAngle = random(-30, 150)
 
-        const blurs = Gsap.utils.toArray(".blur")
+        // const blurs = Gsap.utils.toArray(".blur")
+        const blurs = [...document.querySelectorAll(".blur")]
         
         blurs.forEach((blur) => {
             Gsap.set(blur, {
@@ -26,7 +26,7 @@ export default function OpeningBg() {
             rotate(blur, 1)
         })
 
-        function rotate(target, direction) {
+        function rotate(target: object, direction: number) {
             Gsap.to(target, {
                 rotation: randomAngle(direction),
                 duration: randomTime2(),
@@ -36,7 +36,7 @@ export default function OpeningBg() {
             })
         }
 
-        function moveX(target, direction) {
+        function moveX(target: object, direction: number) {
             Gsap.to(target, {
                 x: randomX(direction),
                 duration: randomTime(),
@@ -46,7 +46,7 @@ export default function OpeningBg() {
             })
         }
 
-        function moveY(target, direction) {
+        function moveY(target: object, direction: number) {
             Gsap.to(target, {
                 y: randomY(direction),
                 duration: randomTime(),
@@ -56,7 +56,7 @@ export default function OpeningBg() {
             })
         }
 
-        function random(min, max) {
+        function random(min: number, max: number) {
             const delta = max - min
             return (direction = 1) => (min + delta * Math.random()) * direction
         }
