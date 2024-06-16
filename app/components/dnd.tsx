@@ -45,7 +45,7 @@ export function Draggable(props) {
                 autoAlpha: 1,
                 duration: .5,
                 delay: 0,
-                y: 0,
+                y: "0",
                 stagger: 0.015,
             });
     }, []);

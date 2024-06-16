@@ -22,10 +22,12 @@ export default function OpeningAnim() {
         Gsap.fromTo('.openingHead', 
             {
                 autoAlpha: 0,
-                ease: "power1.out"
+                ease: "power1.out",
+                scale: .8
             },
             {
                 autoAlpha: 1,
+                scale: 1
         });
         Gsap.fromTo('.openingHead span', 
             {

@@ -23,13 +23,12 @@ export default function Container({QUIZ, DB}){
         }
     })
 
-
     return(
         <div className='container'>
             <OpeningAnim></OpeningAnim>
             {/* <ThreeMotion></ThreeMotion> */}
             { loading == "finish" && renderQuiz() }
-            { quiz == QUIZ.length && <FinishPage></FinishPage> }
+            { quiz >= QUIZ.length && <FinishPage></FinishPage> }
         </div>
     )
 }
