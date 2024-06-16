@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 import { loadingState, quizState } from '../atoms/atoms';
 import QuizPanel from './quizPanel';
 import OpeningAnim from './openingAnim';
+import FinishPage from "./finishPage";
 
 export default function Container({QUIZ, DB}){
     const [loading, setLoading] = useRecoilState(loadingState);
@@ -16,22 +17,17 @@ export default function Container({QUIZ, DB}){
             const filterDB = choicesIds.map(id => DB.find(obj => obj["id"] === Number(id)) )
 
             return (
-                <QuizPanel key={i} QUIZ={q} choicesIds={choicesIds} DB={filterDB}  />
+                <QuizPanel key={i} QUIZ={q} DB={filterDB} quizMax={QUIZ.length} />
             )
         }
     })
 
-    const finishQuiz = () => {
-        return(
-            <p>クイズ終了</p>
-        )
-    }
 
     return(
         <div className='container'>
             <OpeningAnim></OpeningAnim>
             { loading == "finish" && renderQuiz() }
-            { quiz == QUIZ.length && finishQuiz() }
+            { quiz == QUIZ.length && <FinishPage></FinishPage> }
         </div>
     )
 }

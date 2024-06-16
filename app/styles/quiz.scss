@@ -60,9 +60,12 @@ header{
 .text {
     &-subhead {
         font-size: vw(28);
+        font-weight: 700;
         letter-spacing: 0;
         line-height: 1.2;
         opacity: 0;
+        display: inline-block;
+        position: relative;
     }
 
     &-outline {
@@ -91,7 +94,8 @@ header{
 }
 
 .quizBox {
-    margin-top: vw(50);
+    margin: vw(50) vw(50) 0;
+    position: relative;
 
     .dropBox {
         background: rgba(255, 255, 255, .7);
@@ -100,10 +104,18 @@ header{
         max-height: 50vh;
         height: 40vw;
         transition: opacity .3s;
+        border-radius: 8px;
 
         h1{
             font-size: vw(36);
         }
+    }
+    .pager{
+        position: absolute;
+        right: vw(20);
+        font-size: vw(30);
+        font-weight: 600;
+        color: #aaa;
     }
 
     .answerBtnWrap{
@@ -136,9 +148,19 @@ header{
         &.answerBtn-draggable-1,
         &.answerBtn-draggable-3{
             background: #A5EBDC;
+            &:hover::before {
+                transform: scale(1.15);
+                opacity: 0;
+                border-color: #8fcfc1;
+            }
         }
         &.answerBtn-draggable-2{
             background: #BDB5E4;
+            &:hover::before {
+                transform: scale(1.15);
+                opacity: 0;
+                border-color: #BDB5E4;
+            }
         }
 
         * {
@@ -165,12 +187,6 @@ header{
             transition: transform .5s, opacity .6s;
             transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
             opacity: 1;
-        }
-
-        &:hover::before {
-            transform: scale(1.15);
-            opacity: 0;
-            border-color: #8fcfc1;
         }
     }
 }

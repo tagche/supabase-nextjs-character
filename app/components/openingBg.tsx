@@ -7,9 +7,9 @@ export default function OpeningBg() {
     useEffect(() => {
         Gsap.to(".mask",
             {
-                ease: 'power2.inOut',
+                ease: 'power2.in',
                 duration: 2,
-                delay: 1,
+                delay: 0,
                 background: "radial-gradient(circle at center, rgba(255,255,255,0) 0, #fff 100%, #fff 100%)"
             }
         )

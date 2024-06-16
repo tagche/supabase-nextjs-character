@@ -8,7 +8,7 @@ import { Droppable, Draggable } from './dnd';
 import Gsap from "gsap";
 import { nl2br } from '../util/util';
 
-export default function QuizPanel({QUIZ, choicesIds, DB}) {
+export default function QuizPanel({QUIZ, DB, quizMax}) {
     const [parent, setParent] = useState(Array)
     const [answer, setAnswer] = useState(Number)
     const [quiz, setQuiz] = useRecoilState(quizState);
@@ -48,6 +48,7 @@ export default function QuizPanel({QUIZ, choicesIds, DB}) {
 
     return (
         <section className='quizBox'>
+            <p className="pager">{Number(quiz) + 1}/{quizMax}</p>
             <DndContext onDragEnd={handleDragEnd}>
                 <Droppable id="choiceA" >
                     <h1>{nl2br(QUIZ.question)}</h1>

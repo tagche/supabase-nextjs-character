@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 export const loadingState = atom({
     key: 'loadingState', 
-    default: 'loading...',
+    default: 'start',
 });
 
 export const quizState = atom({

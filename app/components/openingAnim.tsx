@@ -35,9 +35,10 @@ export default function OpeningAnim() {
             },
             {
                 autoAlpha: 1,
-                y: -15,
+                y: -20,
                 stagger: 0.01,
-        });
+            }
+        );
 
         Gsap.fromTo('.openingSubhead',
             {
@@ -45,7 +46,7 @@ export default function OpeningAnim() {
                 ease: "power1.out"
             },
             {
-                display: "block",
+                display: "inline-block",
                 autoAlpha: 1,
                 duration: .1,
                 delay: .75,
@@ -54,13 +55,14 @@ export default function OpeningAnim() {
                         setLoading("finish")
                     }, 750);
                 },
-            });
+            }
+        );
     }, []);
 
     return (
         <header>
-            <h2 className='text-subhead openingSubhead'>Next.js × Supabase</h2>
-            <h1 className='text-outline openingHead'>Front-End Developer L.T's Portfolio</h1>
+            <p className='text-subhead openingSubhead'>Next.js × Supabase</p>
+            <h1 className='text-outline openingHead'>Front-End Developer Leo's Page</h1>
         </header>
     );
 
