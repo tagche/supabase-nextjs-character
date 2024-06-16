@@ -5,6 +5,7 @@ import { loadingState, quizState } from '../atoms/atoms';
 import QuizPanel from './quizPanel';
 import OpeningAnim from './openingAnim';
 import FinishPage from "./finishPage";
+import ThreeMotion from "./three";
 
 export default function Container({QUIZ, DB}){
     const [loading, setLoading] = useRecoilState(loadingState);
@@ -26,6 +27,7 @@ export default function Container({QUIZ, DB}){
     return(
         <div className='container'>
             <OpeningAnim></OpeningAnim>
+            {/* <ThreeMotion></ThreeMotion> */}
             { loading == "finish" && renderQuiz() }
             { quiz == QUIZ.length && <FinishPage></FinishPage> }
         </div>

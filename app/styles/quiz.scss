@@ -1,5 +1,5 @@
-
 $viewport: 1240;
+
 @function vw($num, $width: $viewport) {
     @return (1vw * $num / $width * 100);
 }
@@ -9,7 +9,21 @@ body {
     margin: 0;
     padding: 0;
 }
-.bgGradation{
+
+:root {
+    --color: pink;
+    --color-1: #FF97C3;
+    --color-2: #A3FFF5;
+    --color-3: #CDC2FF;
+    --color-4: #FAFFBE;
+    --blur-1-size: clamp(100px, 30vw, 40vw);
+    --blur-2-size: clamp(300px, 50vw, 50vw);
+    --blur-3-size: clamp(200px, 35vw, 40vw);
+    --blur-4-size: clamp(300px, 50vw, 50vw);
+    --blur-amount: clamp(40px, 5vw, 90px);
+}
+
+.bgGradation {
     position: fixed;
     top: 0;
     left: 0;
@@ -17,14 +31,49 @@ body {
     bottom: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 35% 35%, #FAFFBE 0, #FAFFBE 7%, transparent 30%),
-                radial-gradient(circle at 60% 40%, #A3FFF5 0, #A3FFF5 5%, transparent 40%),
-                radial-gradient(circle  at 60% 50%, #BBADFF 0, #BBADFF 30%, transparent 50%),
-                radial-gradient(circle  at 40% 60%, #FF78B2 0, #FF78B2 20%, transparent 40%);
-    transform: scale(1.3);
-
     overflow: hidden;
-    .mask{
+
+    .blur {
+        position: absolute;
+        z-index: 1;
+        border-radius: 900px;
+        filter: blur(var(--blur-amount));
+        &:nth-child(1) {
+            background: var(--color-1);
+            height: var(--blur-1-size);
+            width: calc(var(--blur-1-size) * 1.1);
+            top: 30vh;
+            right: 20vh;
+        }
+        &:nth-child(2) {
+            filter: blur(var(--blur-amount)) brightness(1.3);
+            background: var(--color-2);
+            height: var(--blur-2-size);
+            width: calc(var(--blur-2-size) * 0.75);
+            top: 20vh;
+            right: 20vh;
+        }
+        &:nth-child(3) {
+            filter: blur(var(--blur-amount));
+            background: var(--color-3);
+            height: var(--blur-3-size);
+            width: calc(var(--blur-3-size) * 2);
+            opacity: .8;
+            bottom: 20vh;
+            left: 20vw;
+        }
+        &:nth-child(4) {
+            filter: blur(var(--blur-amount));
+            background: var(--color-4);
+            height: var(--blur-4-size);
+            width: calc(var(--blur-4-size) * 2);
+            opacity: .8;
+            bottom: 20vh;
+            left: 20vw;
+        }
+    }
+
+    .mask {
         width: 100%;
         height: 100%;
         background: radial-gradient(circle at center, #fff 0, #fff 0%, #fff 100%);
@@ -46,7 +95,7 @@ p {
     margin: .3em 0;
 }
 
-h1{
+h1 {
     font-weight: 900;
 }
 
@@ -54,9 +103,10 @@ p {
     font-weight: normal;
 }
 
-header{
+header {
     margin-top: vw(30);
 }
+
 .text {
     &-subhead {
         font-size: vw(28);
@@ -78,10 +128,12 @@ header{
         text-stroke: 1px #000;
         opacity: 0;
     }
-    &-guide{
+
+    &-guide {
         font-size: vw(18);
     }
-    &-dropguide{
+
+    &-dropguide {
         color: #a6a6a6;
         font-size: vw(30);
         opacity: 0.3;
@@ -106,11 +158,12 @@ header{
         transition: opacity .3s;
         border-radius: 8px;
 
-        h1{
+        h1 {
             font-size: vw(36);
         }
     }
-    .pager{
+
+    .pager {
         position: absolute;
         right: vw(20);
         font-size: vw(30);
@@ -118,23 +171,25 @@ header{
         color: #aaa;
     }
 
-    .answerBtnWrap{
+    .answerBtnWrap {
         // display: flex;
         // justify-content: space-evenly;
-        
+
         .answerBtn-draggable-1,
-        .answerBtn-draggable-3{
+        .answerBtn-draggable-3 {
             position: absolute;
             transform: translateY(-50%);
             left: vw(200);
         }
-        .answerBtn-draggable-2{
+
+        .answerBtn-draggable-2 {
             position: absolute;
             transform: translateY(-50%);
             right: vw(200);
         }
-        
+
     }
+
     .answerBtn {
         font-size: vw(40);
         color: #fcfcfc;
@@ -145,17 +200,21 @@ header{
         height: vw(240);
         cursor: grab;
         position: relative;
+
         &.answerBtn-draggable-1,
-        &.answerBtn-draggable-3{
+        &.answerBtn-draggable-3 {
             background: #A5EBDC;
+
             &:hover::before {
                 transform: scale(1.15);
                 opacity: 0;
                 border-color: #8fcfc1;
             }
         }
-        &.answerBtn-draggable-2{
+
+        &.answerBtn-draggable-2 {
             background: #BDB5E4;
+
             &:hover::before {
                 transform: scale(1.15);
                 opacity: 0;
@@ -189,4 +248,9 @@ header{
             opacity: 1;
         }
     }
+}
+
+#threeMotion {
+    position: fixed;
+    z-index: 0;
 }
