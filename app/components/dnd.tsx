@@ -8,7 +8,7 @@ import Gsap from "gsap";
  * @param props 
  * @returns 
  */
-export function Droppable(props) {
+export function Droppable(props: any) {
     const {isOver, setNodeRef} = useDroppable({
         id: props.id,
     });
@@ -25,7 +25,7 @@ export function Droppable(props) {
  * @param props 
  * @returns 
  */
-export function Draggable(props) {
+export function Draggable(props: any) {
     const {attributes, listeners, setNodeRef, transform} = useDraggable({
         id: props.id,
     });

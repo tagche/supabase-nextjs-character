@@ -3,7 +3,6 @@
 import { Noto_Sans_JP } from "next/font/google";
 import Footer from "./layout/footer";
 import "./styles/quiz.scss";
-import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 
 const noto = Noto_Sans_JP ({
@@ -14,7 +13,7 @@ const noto = Noto_Sans_JP ({
 
 export default function RootLayout({children,}: Readonly<{ children: React.ReactNode }>) {
     return (
-        <html lang="en">
+        <html lang="ja">
             <body className={noto.className}>
                 <RecoilRoot>
                     {children}

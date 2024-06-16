@@ -7,7 +7,7 @@ export default function FinishPage(){
 
     const handleTop = () => {
         setLoading("finish");
-        setQuiz("0");
+        setQuiz(0);
     }
 
     return(
