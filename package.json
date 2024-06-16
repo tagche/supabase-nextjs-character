@@ -13,15 +13,13 @@
     "@dnd-kit/sortable": "^8.0.0",
     "@headlessui/react": "^2.0.4",
     "@supabase/ssr": "^0.3.0",
-    "framer-motion": "^11.2.10",
     "gsap": "^3.12.5",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
     "recoil": "^0.7.7",
     "sass": "^1.77.4",
-    "supabase": "^1.172.2",
-    "three": "^0.165.0"
+    "supabase": "^1.172.2"
   },
   "devDependencies": {
     "@types/node": "^20",
