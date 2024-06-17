@@ -68,7 +68,7 @@ export default function OpeningAnim() {
     return (
         <header>
             <p className="text-subhead openingSubhead">Next.js × Supabase</p>
-            <h1 className="text-outline openingHead">Front-End Developer Leo&apos;s Page</h1>
+            <h1 className="text-outline openingHead">Front-End Developer Leo&apos;s Portfolio</h1>
         </header>
     );
 
