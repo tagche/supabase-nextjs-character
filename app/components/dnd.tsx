@@ -37,16 +37,16 @@ export function Draggable(props: any) {
         Gsap.fromTo('.answerBtn',
             {
                 autoAlpha: 0,
-                ease: "power1.out",
-                y: 50
+                ease: "power3.inOut",
+                transform: "translate(0, 50%) scale(0.8)"
             },
             {
                 display: "inline-block",
                 autoAlpha: 1,
-                duration: .5,
+                duration: .4,
                 delay: 0,
-                y: "0",
-                stagger: 0.015,
+                transform: "translate(0, 0) scale(1)",
+                stagger: 0.08,
             });
     }, []);
 
