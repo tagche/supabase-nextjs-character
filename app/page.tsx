@@ -11,10 +11,11 @@ export const metadata: Metadata = {
 export default function Home() {
     const checkSupabaseClient = () => {
         try {
-          createClient();
-          return true;
+            createClient();
+            return true;
         } catch (e) {
-          return false;
+            console.log(e);
+            return false;
         }
     };
 
