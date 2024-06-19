@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { createClient } from '@/utils/supabase/server';
+import supabase from '@/utils/supabase'
 import OpeningBg from './components/openingBg';
 import Container from "./components";
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function Home() {
     const checkSupabaseClient = () => {
         try {
-            createClient();
+            supabase;
             return true;
         } catch (e) {
             console.log(e);
@@ -20,7 +20,6 @@ export default function Home() {
     };
 
     const connectSupabaseClient = async() => {
-        const supabase = createClient();
         const { data: QUIZ } = await supabase.from('nextjs-quiz')
             .select('*')
             .order('id', { ascending: true })
